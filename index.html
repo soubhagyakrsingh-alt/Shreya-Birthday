@@ -1,0 +1,428 @@
+<!-- SAVE THIS AS index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Shreya 💖</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow-x:hidden;
+      background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+      color:white;
+      min-height:100vh;
+    }
+
+    section{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:40px 20px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    h1{
+      font-size:4rem;
+      text-align:center;
+      z-index:2;
+    }
+
+    h2{
+      font-size:2.5rem;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    p{
+      font-size:1.1rem;
+      line-height:1.8;
+      text-align:center;
+      max-width:800px;
+    }
+
+    .hero h1{
+      font-family:'Dancing Script',cursive;
+      font-size:5rem;
+      background:linear-gradient(to right,#ff9ed2,#ffd6f6);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+      margin-top:20px;
+      font-size:1.2rem;
+      opacity:0.9;
+    }
+
+    .btn{
+      margin-top:35px;
+      padding:15px 35px;
+      border:none;
+      border-radius:40px;
+      font-size:1rem;
+      background:linear-gradient(45deg,#ff4d8d,#ff85b3);
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 0 20px rgba(255,105,180,0.5);
+      z-index:2;
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+    }
+
+    .floating-hearts span{
+      position:absolute;
+      bottom:-50px;
+      color:rgba(255,255,255,0.5);
+      animation:float 10s linear infinite;
+      font-size:20px;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    .letter-box{
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.1);
+      padding:40px;
+      border-radius:25px;
+      max-width:850px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .letter-box h2{
+      font-family:'Dancing Script',cursive;
+      font-size:3rem;
+      color:#ffb6da;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+      width:100%;
+      max-width:1100px;
+      margin-top:40px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      padding:15px;
+      border-radius:20px;
+      transition:0.4s;
+      backdrop-filter:blur(8px);
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.03);
+    }
+
+    .card img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:15px;
+    }
+
+    .caption{
+      margin-top:12px;
+      text-align:center;
+      font-size:0.95rem;
+    }
+
+    .reasons{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+      max-width:1000px;
+      width:100%;
+      margin-top:40px;
+    }
+
+    .reason-card{
+      padding:30px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.08);
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .reason-card:hover{
+      transform:scale(1.05);
+      background:rgba(255,255,255,0.14);
+    }
+
+    .reason-card h3{
+      margin-bottom:10px;
+      color:#ffb6da;
+    }
+
+    .final-screen h1{
+      font-size:6rem;
+      animation:glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ff5ca8;
+      }
+      to{
+        text-shadow:0 0 30px #ffb3d9,0 0 60px #ff5ca8;
+      }
+    }
+
+    .signature{
+      margin-top:20px;
+      font-size:1.2rem;
+      opacity:0.8;
+    }
+
+    canvas{
+      position:fixed;
+      top:0;
+      left:0;
+      pointer-events:none;
+      z-index:999;
+    }
+
+    @media(max-width:768px){
+      .hero h1{
+        font-size:3.5rem;
+      }
+
+      .final-screen h1{
+        font-size:3rem;
+      }
+
+      h2{
+        font-size:2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="floating-hearts"></div>
+
+  <h1>Happy Birthday Shreya 💖</h1>
+
+  <p>
+    Today is all about you ✨<br>
+    A special surprise made with love.
+  </p>
+
+  <button class="btn" onclick="scrollToLetter()">
+    Open Your Surprise 🎁
+  </button>
+</section>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="letter-box">
+    <h2>Dear Shreya,</h2>
+
+    <p style="margin-top:25px;">
+      Happy Birthday to one of the most amazing people ever 💫<br><br>
+
+      Thank you for all the laughter, memories, conversations,
+      and beautiful moments we’ve shared together.<br><br>
+
+      You deserve happiness, success, peace,
+      and every beautiful thing this world has to offer.<br><br>
+
+      No matter what happens,
+      never stop smiling because your smile truly makes everything brighter ✨<br><br>
+
+      I hope this year becomes the best chapter of your life.<br><br>
+
+      Once again...<br>
+      Happy Birthday Shreya 💖
+    </p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section>
+  <h2>Beautiful Memories 📸</h2>
+
+  <div class="gallery">
+
+    <div class="card">
+      <img src="images/pic1.jpg" alt="">
+      <div class="caption">A memory worth keeping forever ✨</div>
+    </div>
+
+    <div class="card">
+      <img src="images/pic2.jpg" alt="">
+      <div class="caption">Partners in chaos 😭</div>
+    </div>
+
+    <div class="card">
+      <img src="images/pic3.jpg" alt="">
+      <div class="caption">One of my favorite moments 💫</div>
+    </div>
+
+    <div class="card">
+      <img src="images/pic4.jpg" alt="">
+      <div class="caption">You deserve the world 💖</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- REASONS -->
+<section>
+  <h2>Why You're Amazing 🌸</h2>
+
+  <div class="reasons">
+
+    <div class="reason-card">
+      <h3>Kind 💕</h3>
+      <p>You always care about others genuinely.</p>
+    </div>
+
+    <div class="reason-card">
+      <h3>Funny 😂</h3>
+      <p>You make every moment more fun.</p>
+    </div>
+
+    <div class="reason-card">
+      <h3>Strong 🌟</h3>
+      <p>You handle things better than you realize.</p>
+    </div>
+
+    <div class="reason-card">
+      <h3>Special ✨</h3>
+      <p>There’s truly nobody else like you.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final-screen">
+  <h1>HAPPY BIRTHDAY SHREYA 🎂</h1>
+
+  <p class="signature">
+    Made with love 💖
+  </p>
+</section>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+  // Scroll
+  function scrollToLetter(){
+    document.getElementById('letter').scrollIntoView({
+      behavior:'smooth'
+    });
+  }
+
+  // Floating hearts
+  const heartsContainer = document.querySelector('.floating-hearts');
+
+  function createHeart(){
+    const heart = document.createElement('span');
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+    heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.remove();
+    },10000);
+  }
+
+  setInterval(createHeart,300);
+
+  // Confetti
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const pieces = [];
+
+  for(let i=0;i<150;i++){
+    pieces.push({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      r:Math.random()*6+2,
+      d:Math.random()*150
+    });
+  }
+
+  function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle='rgba(255,192,203,0.8)';
+
+    pieces.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2,true);
+      ctx.fill();
+    });
+
+    updateConfetti();
+  }
+
+  function updateConfetti(){
+    pieces.forEach(p=>{
+      p.y += Math.cos(p.d)+1+ p.r/2;
+      p.x += Math.sin(0);
+
+      if(p.y > canvas.height){
+        p.y = -10;
+      }
+    });
+  }
+
+  setInterval(drawConfetti,20);
+
+  window.addEventListener('resize',()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
+
+</body>
+</html>
